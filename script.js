@@ -61,12 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.section-footer')
     ];
 
-    // Set initial hidden state for scroll elements
+    // Set initial hidden state for scroll elements by adding the class
     fadeOnScrollElements.forEach(el => {
         if (el) {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 0.9s cubic-bezier(0.25, 1, 0.5, 1)';
+            el.classList.add('animate-on-scroll');
         }
     });
 
@@ -77,13 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 const target = entry.target;
-                // Add a small delay for staggered card animation if multiple are triggered
                 setTimeout(() => {
-                    target.style.opacity = '1';
-                    target.style.transform = 'translateY(0)';
+                    target.classList.add('visible');
                 }, 50);
                 observer.unobserve(target);
             }

@@ -299,6 +299,7 @@ html, body {
 }
 
 .card {
+    position: relative; /* Position relative for the floating bouncing ball */
     background-color: #1d2023;
     border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 16px;
@@ -315,6 +316,39 @@ html, body {
     background-color: #24282c;
     border-color: rgba(255, 255, 255, 0.08);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Card Bouncing Soccer Ball Hover Animation */
+.card-ball {
+    position: absolute;
+    top: -28px; /* Float right above card border */
+    right: 28px;
+    width: 48px;
+    height: 48px;
+    opacity: 0;
+    transform: scale(0) translateY(-15px);
+    transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    mix-blend-mode: screen; /* Hides the black background of the ball image */
+    pointer-events: none;
+    z-index: 10;
+}
+
+.card:hover .card-ball {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    animation: ball-bounce 0.85s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+@keyframes ball-bounce {
+    0% {
+        transform: translateY(0) scaleX(1.08) scaleY(0.92) rotate(0deg);
+    }
+    35% {
+        transform: translateY(-6px) scaleX(1) scaleY(1) rotate(45deg);
+    }
+    100% {
+        transform: translateY(-26px) scaleX(0.96) scaleY(1.04) rotate(180deg);
+    }
 }
 
 .card-header {
@@ -373,7 +407,20 @@ html, body {
     
     .cards-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+        gap: 2.2rem;
+    }
+
+    /* Staggered offset for even cards */
+    .card:nth-child(even) {
+        transform: translateY(80px);
+    }
+
+    .card:nth-child(even):hover {
+        transform: translateY(74px) scale(1.01); /* Combines staggered offset and hover translate */
+    }
+
+    .section-footer {
+        margin-top: calc(32px + 80px); /* Base spacing (32px) + offset correction (80px) */
     }
 
     .section-actions {
@@ -392,5 +439,31 @@ html, body {
 @media (min-width: 1400px) {
     .how-it-works-content {
         max-width: 1300px;
+    }
+}
+
+/* ==========================================================================
+   Entrance Scroll Animations (CSS-driven to preserve responsive layout offsets)
+   ========================================================================== */
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+    /* Staggered offset combinations with scroll animation states */
+    .card:nth-child(even).animate-on-scroll {
+        transform: translateY(110px); /* 80px staggered layout + 30px animation shift */
+    }
+    
+    .card:nth-child(even).animate-on-scroll.visible {
+        transform: translateY(80px); /* Staggered layout target */
     }
 }
