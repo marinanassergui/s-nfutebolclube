@@ -407,20 +407,7 @@ html, body {
     
     .cards-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 2.2rem;
-    }
-
-    /* Staggered offset for even cards */
-    .card:nth-child(even) {
-        transform: translateY(80px);
-    }
-
-    .card:nth-child(even):hover {
-        transform: translateY(74px) scale(1.01); /* Combines staggered offset and hover translate */
-    }
-
-    .section-footer {
-        margin-top: calc(32px + 80px); /* Base spacing (32px) + offset correction (80px) */
+        gap: 2rem;
     }
 
     .section-actions {
@@ -457,13 +444,4 @@ html, body {
     transform: translateY(0);
 }
 
-@media (min-width: 768px) {
-    /* Staggered offset combinations with scroll animation states */
-    .card:nth-child(even).animate-on-scroll {
-        transform: translateY(110px); /* 80px staggered layout + 30px animation shift */
-    }
-    
-    .card:nth-child(even).animate-on-scroll.visible {
-        transform: translateY(80px); /* Staggered layout target */
-    }
-}
+
