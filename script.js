@@ -53,4 +53,44 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Scroll-based animations for Section 2 elements
+    const fadeOnScrollElements = [
+        document.querySelector('.section-header'),
+        ...document.querySelectorAll('.card'),
+        document.querySelector('.section-footer')
+    ];
+
+    // Set initial hidden state for scroll elements
+    fadeOnScrollElements.forEach(el => {
+        if (el) {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 0.9s cubic-bezier(0.25, 1, 0.5, 1)';
+        }
+    });
+
+    const observerOptions = {
+        root: null,
+        threshold: 0.08,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                // Add a small delay for staggered card animation if multiple are triggered
+                setTimeout(() => {
+                    target.style.opacity = '1';
+                    target.style.transform = 'translateY(0)';
+                }, 50);
+                observer.unobserve(target);
+            }
+        });
+    }, observerOptions);
+
+    fadeOnScrollElements.forEach(el => {
+        if (el) observer.observe(el);
+    });
 });
