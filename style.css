@@ -328,7 +328,6 @@ html, body {
     opacity: 0;
     transform: scale(0) translateY(-15px);
     transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    mix-blend-mode: screen; /* Hides the black background of the ball image */
     pointer-events: none;
     z-index: 10;
 }
