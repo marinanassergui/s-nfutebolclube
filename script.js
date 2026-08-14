@@ -54,11 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Scroll-based animations for Section 2 elements
+    // Scroll-based animations for Section 2 & 3 elements
     const fadeOnScrollElements = [
         document.querySelector('.section-header'),
         ...document.querySelectorAll('.card'),
-        document.querySelector('.section-footer')
+        document.querySelector('.section-footer'),
+        document.querySelector('.project-info-inner'),
+        document.querySelector('.project-image-panel')
     ];
 
     // Set initial hidden state for scroll elements by adding the class

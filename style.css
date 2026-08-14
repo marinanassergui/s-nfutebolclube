@@ -429,6 +429,200 @@ html, body {
 }
 
 /* ==========================================================================
+   About The Project Section Styles (Section 3)
+   ========================================================================== */
+
+.project-details {
+    background-color: #f3f4f6;
+    width: 100%;
+    overflow: hidden;
+}
+
+.project-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4rem 1.5rem;
+    background-color: #f3f4f6;
+    height: 100%;
+}
+
+.project-info-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    max-width: 580px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.project-title {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #111315;
+}
+
+.project-description {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.project-description p {
+    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+    line-height: 1.6;
+    color: #33373b;
+    font-weight: 400;
+}
+
+.project-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+}
+
+.btn-secondary {
+    background-color: #161a1d;
+    color: #ffffff;
+    padding: 0.95rem 2.5rem;
+    font-size: 1rem;
+    border-radius: 100px;
+    width: 100%;
+    max-width: 320px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+    background-color: #24292e;
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Infinite Animated Marquee Carousel */
+.project-marquee {
+    margin-top: 3.5rem;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    padding: 0.5rem 0;
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 22s linear infinite;
+}
+
+.marquee-content {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    padding-right: 1.8rem;
+    white-space: nowrap;
+}
+
+.marquee-content span {
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    font-weight: 800;
+    color: #111315;
+    letter-spacing: -0.01em;
+}
+
+.marquee-content .arrow {
+    color: #888d92;
+    font-weight: 400;
+}
+
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.project-image-panel {
+    width: 100%;
+    min-height: 400px;
+    background-color: #111315;
+}
+
+.project-side-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Responsive updates for Section 3 */
+@media (min-width: 768px) {
+    .project-info {
+        padding: 5rem 3rem;
+    }
+
+    .project-actions {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 1.5rem;
+    }
+    
+    .btn-secondary {
+        width: auto;
+        max-width: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-split {
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    .project-info {
+        padding: 6rem 8% 5rem 8%;
+    }
+
+    .project-info-inner {
+        margin: auto auto 0 auto; /* Pulls content to center vertically but leaves bottom space for marquee */
+    }
+
+    .project-marquee {
+        margin-top: auto; /* Pushes marquee to the bottom of the column */
+        padding-top: 5rem;
+    }
+
+    .project-image-panel {
+        min-height: auto;
+        height: 100%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .project-info-inner {
+        max-width: 620px;
+    }
+}
+
+/* ==========================================================================
    Entrance Scroll Animations (CSS-driven to preserve responsive layout offsets)
    ========================================================================== */
 
