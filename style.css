@@ -513,51 +513,6 @@ html, body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Infinite Animated Marquee Carousel */
-.project-marquee {
-    margin-top: 3.5rem;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-    padding: 0.5rem 0;
-}
-
-.marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marquee-scroll 22s linear infinite;
-}
-
-.marquee-content {
-    display: flex;
-    align-items: center;
-    gap: 1.8rem;
-    padding-right: 1.8rem;
-    white-space: nowrap;
-}
-
-.marquee-content span {
-    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
-    font-weight: 800;
-    color: #111315;
-    letter-spacing: -0.01em;
-}
-
-.marquee-content .arrow {
-    color: #888d92;
-    font-weight: 400;
-}
-
-@keyframes marquee-scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
 
 .project-side-img {
     width: 100%;
@@ -592,16 +547,11 @@ html, body {
     }
 
     .project-info {
-        padding: 6rem 8% 5rem 8%;
+        padding: 6rem 8%;
     }
 
     .project-info-inner {
-        margin: auto auto 0 auto; /* Pulls content to center vertically but leaves bottom space for marquee */
-    }
-
-    .project-marquee {
-        margin-top: auto; /* Pushes marquee to the bottom of the column */
-        padding-top: 5rem;
+        margin: auto;
     }
 
     .project-side-img {
