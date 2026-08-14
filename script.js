@@ -59,8 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.section-header'),
         ...document.querySelectorAll('.card'),
         document.querySelector('.section-footer'),
-        document.querySelector('.project-info-inner'),
-        document.querySelector('.project-image-panel')
+        document.querySelector('.project-info-inner')
     ];
 
     // Set initial hidden state for scroll elements by adding the class
