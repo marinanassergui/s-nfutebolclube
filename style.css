@@ -1,0 +1,250 @@
+/* ==========================================================================
+   S&N Futebol Clube - Hero CSS
+   ========================================================================== */
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-primary: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --color-text-white: #ffffff;
+    --color-text-muted: rgba(255, 255, 255, 0.85);
+    --color-gold: #c5a059; /* Custom premium gold color matching the image design */
+    --color-btn-bg: #ffffff;
+    --color-btn-text: #161a1d;
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-primary);
+    background-color: #0b0d0f;
+    color: var(--color-text-white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hero Section Container */
+.hero {
+    position: relative;
+    isolation: isolate; /* Creates stacking context so negative z-index children do not render behind body */
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 2rem;
+    overflow: hidden;
+}
+
+/* Background Video Styling */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Dark Overlay for Text Readability */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg, 
+        rgba(11, 13, 15, 0.40) 0%, 
+        rgba(11, 13, 15, 0.55) 50%, 
+        rgba(11, 13, 15, 0.70) 100%
+    );
+    z-index: -1;
+}
+
+/* Content Wrapper */
+.hero-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+/* Header & Logo */
+.hero-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.hero-logo-img {
+    width: clamp(260px, 40vw, 450px);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+/* Main Content Grid */
+.hero-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    width: 100%;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    width: 100%;
+    align-items: center;
+}
+
+.hero-col-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-text-white);
+}
+
+.hero-title-highlight {
+    display: block;
+    color: var(--color-gold);
+    margin-top: 0.5rem;
+}
+
+.hero-col-right {
+    display: flex;
+    align-items: flex-start;
+}
+
+.hero-description {
+    font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    letter-spacing: 0.01em;
+}
+
+/* Footer & Buttons */
+.hero-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    align-items: center;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-primary {
+    background-color: var(--color-btn-bg);
+    color: var(--color-btn-text);
+    padding: 0.95rem 2.5rem;
+    font-size: 1rem;
+    border-radius: 100px;
+    width: 100%;
+    max-width: 320px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+    background-color: #f8f9fa;
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Media Queries for Desktop and Tablet Responsiveness */
+@media (min-width: 768px) {
+    .hero {
+        padding: 4rem 3rem;
+    }
+    
+    .hero-actions {
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .btn-primary {
+        width: auto;
+        max-width: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero {
+        padding: 4.5rem 8%;
+    }
+
+    .hero-content {
+        gap: 4rem;
+    }
+
+
+    .hero-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 56px;
+    }
+    
+    .hero-title {
+        text-align: left;
+    }
+    
+    .hero-col-right {
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 1400px) {
+    .hero-content {
+        max-width: 1300px;
+    }
+}
