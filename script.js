@@ -136,4 +136,89 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // WordPress News Section Fetching and Rendering
+    const newsGrid = document.getElementById('news-grid');
+    
+    function formatWordPressDate(dateString) {
+        try {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('pt-BR', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        } catch (e) {
+            return '';
+        }
+    }
+    
+    async function loadNews() {
+        if (!newsGrid) return;
+        
+        try {
+            const res = await fetch('/api/get-news');
+            if (!res.ok) throw new Error('API request failed');
+            
+            const posts = await res.json();
+            
+            if (!posts || posts.length === 0) {
+                renderNewsFallback();
+                return;
+            }
+            
+            // Clear skeleton loaders
+            newsGrid.innerHTML = '';
+            
+            // Display maximum of 3 posts
+            posts.slice(0, 3).forEach(post => {
+                const card = document.createElement('a');
+                card.href = post.link;
+                card.className = 'news-card';
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+                
+                const formattedDate = formatWordPressDate(post.date);
+                
+                // Fallback image styling if no image exists
+                const imageHTML = post.image 
+                    ? `<img src="${post.image}" alt="${post.title}" class="card-image" loading="lazy">`
+                    : `<img src="logo.png" alt="S&N Esporte" class="card-image" style="object-fit: contain; padding: 2rem; background: #161a1d;" loading="lazy">`;
+                
+                card.innerHTML = `
+                    <div class="card-image-wrapper">
+                        ${imageHTML}
+                    </div>
+                    <div class="card-info">
+                        <div class="card-date">${formattedDate}</div>
+                        <h3 class="card-news-title">${post.title}</h3>
+                        <span class="card-read-more">Ler na íntegra <span class="arrow">→</span></span>
+                    </div>
+                `;
+                
+                newsGrid.appendChild(card);
+            });
+            
+        } catch (error) {
+            console.error('Error loading S&N Esporte news:', error);
+            renderNewsFallback();
+        }
+    }
+    
+    function renderNewsFallback() {
+        if (!newsGrid) return;
+        // Show fallback linking directly to the Sn-Esporte author archive
+        newsGrid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem;">
+                <p style="color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; font-size: 1.1rem;">
+                    Não foi possível carregar as notícias dinamicamente no momento.
+                </p>
+                <a href="https://sonhoenegocios.com/autor/sn-esporte/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                    Ver notícias em Sonho & Negócios
+                </a>
+            </div>
+        `;
+    }
+    
+    loadNews();
 });
