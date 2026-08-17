@@ -1054,4 +1054,140 @@ html, body {
     }
 }
 
+/* ==========================================================================
+   Nossos Atletas - Players Roster Section
+   ========================================================================== */
+
+.players-section {
+    background-color: #ffffff;
+    padding: 8rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.players-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 4rem;
+}
+
+/* Player Card Styles */
+.player-card {
+    background-color: #fcfcfc;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                border-color 0.4s ease;
+}
+
+.player-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    border-color: rgba(197, 160, 89, 0.4); /* Gold hover border outline */
+}
+
+.player-image-wrapper {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    position: relative;
+    background-color: #e9ecef;
+}
+
+.player-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.player-card:hover .player-image {
+    transform: scale(1.03);
+}
+
+.player-number {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: var(--color-gold);
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 800;
+    padding: 0.4rem 0.8rem;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.player-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.player-name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #161a1d;
+    margin-bottom: 0.5rem;
+}
+
+.player-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.player-position {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.player-divider {
+    color: rgba(22, 26, 29, 0.3);
+}
+
+.player-age {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(22, 26, 29, 0.6);
+}
+
+.player-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(22, 26, 29, 0.8);
+    margin: 0;
+}
+
+/* Mobile Media overrides for players section */
+@media (max-width: 480px) {
+    .players-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .players-section {
+        padding: 5rem 1.2rem;
+    }
+
+    .player-image-wrapper {
+        height: 280px;
+    }
+}
+
 
