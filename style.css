@@ -601,9 +601,10 @@ html, body {
         justify-content: center;
     }
 
-    .project-info-inner {
-        margin: 0 auto;
-        width: 100%;
+    .project-info-inner, .project-features {
+        margin-left: 0;
+        margin-right: auto;
+        max-width: 580px;
     }
 
     .project-side-img {
@@ -613,7 +614,7 @@ html, body {
 }
 
 @media (min-width: 1400px) {
-    .project-info-inner {
+    .project-info-inner, .project-features {
         max-width: 620px;
     }
 }
