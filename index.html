@@ -12,6 +12,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Nav Overlay for mobile menu click-away -->
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <!-- Global Navigation Header -->
+    <header class="main-header" id="main-header">
+        <div class="header-container">
+            <a href="#" class="header-logo-link">
+                <img src="logo.png" alt="S&N Futebol Clube Logo" class="header-logo-img">
+            </a>
+            
+            <!-- Mobile Menu Toggle Hamburger Button -->
+            <button class="mobile-nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <nav class="header-nav">
+                <ul class="nav-list">
+                    <li><a href="#project-details-section" class="nav-link">Sobre</a></li>
+                    <li><a href="#how-it-works-section" class="nav-link">Institucional</a></li>
+                    <li><a href="javascript:void(0)" class="nav-link">SAC</a></li>
+                    <li><a href="https://wa.me/5500000000000" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     <section class="hero" id="hero-section">
         <video autoplay muted loop playsinline src="Soccer_match_in_heavy_rain_202608141253.mp4" class="hero-video">
             <source src="Soccer_match_in_heavy_rain_202608141253.mp4" type="video/mp4">
@@ -23,10 +52,8 @@
 
         <!-- Content Container -->
         <div class="hero-content">
-            <!-- Header Section -->
-            <header class="hero-header">
-                <img src="logo.png" alt="S&N Futebol Clube - Do sonho ao campo" class="hero-logo-img" id="hero-logo-img">
-            </header>
+            <!-- Spacer to maintain layout structure after moving logo to sticky navbar -->
+            <div class="hero-header-spacer" style="height: 60px;"></div>
 
             <!-- Main Content Section -->
             <main class="hero-body">

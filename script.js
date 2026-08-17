@@ -90,4 +90,49 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeOnScrollElements.forEach(el => {
         if (el) observer.observe(el);
     });
+
+    // Sticky Header Scroll Handler
+    const mainHeader = document.getElementById('main-header');
+    function handleScroll() {
+        if (mainHeader) {
+            if (window.scrollY > 50) {
+                mainHeader.classList.add('scrolled');
+            } else {
+                mainHeader.classList.remove('scrolled');
+            }
+        }
+    }
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Trigger once on load
+
+    // Mobile Hamburger Menu Navigation Toggle
+    const navToggle = document.querySelector('.mobile-nav-toggle');
+    const headerNav = document.querySelector('.header-nav');
+    const navOverlay = document.getElementById('nav-overlay');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function toggleMenu() {
+        if (navToggle && headerNav && navOverlay) {
+            const isActive = navToggle.classList.toggle('active');
+            headerNav.classList.toggle('active', isActive);
+            navOverlay.classList.toggle('active', isActive);
+            document.body.style.overflow = isActive ? 'hidden' : '';
+        }
+    }
+
+    if (navToggle) {
+        navToggle.addEventListener('click', toggleMenu);
+    }
+    if (navOverlay) {
+        navOverlay.addEventListener('click', toggleMenu);
+    }
+
+    // Close menu when clicking a link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navToggle && navToggle.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    });
 });
