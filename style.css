@@ -515,7 +515,7 @@ html, body {
 
 /* Infinite Animated Marquee Carousel */
 .project-marquee {
-    margin-top: 3.5rem;
+    margin-top: 32px;
     margin-left: -1.5rem;
     width: 50vw;
     overflow: hidden;
@@ -601,10 +601,10 @@ html, body {
     }
 
     .project-marquee {
-        margin-top: auto;
-        padding-top: 5rem;
+        margin-top: 32px;
         margin-left: -8%;
         width: 50vw;
+        margin-bottom: auto;
     }
 
     .project-side-img {
