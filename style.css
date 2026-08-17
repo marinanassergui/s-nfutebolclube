@@ -655,7 +655,7 @@ html, body {
 /* Scrolled Glassmorphism State */
 .main-header.scrolled {
     padding: 1.1rem 2rem;
-    background-color: rgba(11, 13, 15, 0.75); /* Dark matching page background color #0b0d0f */
+    background-color: rgba(11, 13, 15, 0.9); /* Dark contrast color to light section background */
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -666,31 +666,18 @@ html, body {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
-}
-
-.header-logo-link {
-    display: flex;
-    align-items: center;
-}
-
-.header-logo-img {
-    height: 48px;
-    width: auto;
-    object-fit: contain;
-    transition: height 0.4s ease;
-}
-
-.main-header.scrolled .header-logo-img {
-    height: 40px;
+    position: relative;
 }
 
 /* Desktop Navigation */
 .header-nav {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .nav-list {
@@ -783,6 +770,10 @@ html, body {
     
     .main-header.scrolled {
         padding: 0.8rem 1.5rem;
+    }
+
+    .header-container {
+        justify-content: flex-end;
     }
 
     .mobile-nav-toggle {
