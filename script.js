@@ -97,6 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainHeader = document.getElementById('main-header');
     function handleScroll() {
         if (mainHeader) {
+            const hasHero = document.getElementById('hero-section');
+            if (!hasHero) {
+                mainHeader.classList.add('scrolled');
+                return;
+            }
+            
             const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
             if (scrollTop > 50) {
                 mainHeader.classList.add('scrolled');

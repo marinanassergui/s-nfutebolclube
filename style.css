@@ -31,6 +31,17 @@ html, body {
     scroll-behavior: smooth;
 }
 
+body.no-hero {
+    padding-top: 80px;
+    background-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    body.no-hero {
+        padding-top: 65px;
+    }
+}
+
 /* Hero Section Container */
 .hero {
     position: relative;
